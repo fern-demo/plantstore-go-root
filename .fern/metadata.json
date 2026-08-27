@@ -1,0 +1,19 @@
+{
+  "cliVersion": "5.98.2",
+  "generatorName": "fernapi/fern-go-sdk",
+  "generatorVersion": "1.57.2",
+  "generatorConfig": {
+    "union": "v1",
+    "packageName": "plantstore",
+    "importPath": "github.com/fern-demo/plantstore-go-root/v2",
+    "module": {
+      "path": "github.com/fern-demo/plantstore-go-root/v2"
+    },
+    "inlinePathParameters": true,
+    "inlineFileProperties": true,
+    "omitFernHeaders": true,
+    "includeLegacyClientOptions": false
+  },
+  "invokedBy": "manual",
+  "sdkVersion": "v2.0.0"
+}

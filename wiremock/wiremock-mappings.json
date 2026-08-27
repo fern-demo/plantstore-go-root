@@ -1,0 +1,269 @@
+{
+  "mappings": [
+    {
+      "id": "b40e0e50-1720-4a30-b6dc-f7cc11581d76",
+      "name": "Add a new plant to the store - Successful Plant Addition",
+      "request": {
+        "urlPathTemplate": "/plant",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": 101,\n  \"name\": \"Fern\",\n  \"status\": \"available\",\n  \"tags\": [\n    \"green\",\n    \"leafy\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b40e0e50-1720-4a30-b6dc-f7cc11581d76",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1dc9ce50-5b93-4536-a94a-07aaf320e968",
+      "name": "Update an existing plant - Successful Plant Update",
+      "request": {
+        "urlPathTemplate": "/plant",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": 101,\n  \"name\": \"Fern\",\n  \"status\": \"sold\",\n  \"tags\": [\n    \"green\",\n    \"leafy\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1dc9ce50-5b93-4536-a94a-07aaf320e968",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "59c96ce3-303c-4af8-8f08-a410a7f3a8e3",
+      "name": "Search plants by status - Plants with status available",
+      "request": {
+        "urlPathTemplate": "/plant/search/status",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"id\": 101,\n    \"name\": \"Fern\",\n    \"status\": \"available\",\n    \"tags\": [\n      \"green\",\n      \"leafy\"\n    ]\n  },\n  {\n    \"id\": 102,\n    \"name\": \"Palm\",\n    \"status\": \"available\",\n    \"tags\": [\n      \"tropical\"\n    ]\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "59c96ce3-303c-4af8-8f08-a410a7f3a8e3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "52807dfd-89cb-4d8d-8737-84e894b95e05",
+      "name": "Search plants by tags - Plants filtered by tags",
+      "request": {
+        "urlPathTemplate": "/plant/search/tags",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"id\": 101,\n    \"name\": \"Fern\",\n    \"status\": \"available\",\n    \"tags\": [\n      \"green\",\n      \"leafy\"\n    ]\n  },\n  {\n    \"id\": 103,\n    \"name\": \"Cactus\",\n    \"status\": \"available\",\n    \"tags\": [\n      \"spiky\",\n      \"desert\"\n    ]\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "52807dfd-89cb-4d8d-8737-84e894b95e05",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e9be8e50-ea7a-43ff-b036-ebb37a334ef7",
+      "name": "Find plant by ID - Plant details",
+      "request": {
+        "urlPathTemplate": "/plant/{plantId}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        },
+        "pathParameters": {
+          "plantId": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": 101,\n  \"name\": \"Fern\",\n  \"status\": \"available\",\n  \"tags\": [\n    \"green\",\n    \"leafy\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e9be8e50-ea7a-43ff-b036-ebb37a334ef7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "56913bcc-ee5d-4a61-ba6e-9e77fcf178b8",
+      "name": "Logs user into the system - Successful login response",
+      "request": {
+        "urlPathTemplate": "/user/auth/login",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"token\": \"abc123token\",\n  \"expiresIn\": 3600\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "56913bcc-ee5d-4a61-ba6e-9e77fcf178b8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "9cc7c481-986d-4fec-a6a8-ff9a5effb14a",
+      "name": "Logs out current logged-in user session - default",
+      "request": {
+        "urlPathTemplate": "/user/auth/logout",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9cc7c481-986d-4fec-a6a8-ff9a5effb14a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "7e96ddec-2de5-4474-a679-f424c3f3c9ab",
+      "name": "Get user by username - User details response",
+      "request": {
+        "urlPathTemplate": "/user/{username}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        },
+        "pathParameters": {
+          "username": {
+            "equalTo": "username"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": 1,\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7e96ddec-2de5-4474-a679-f424c3f3c9ab",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "total": 8
+  }
+}
