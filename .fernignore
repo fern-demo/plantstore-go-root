@@ -1,0 +1,13 @@
+# Specify files that shouldn't be modified by Fern
+
+LICENSE
+README.md
+
+# The frozen openapi-generator SDK. Plaid owns this directory and publishes
+# updates to it independently; Fern must never touch it.
+legacy
+
+# One go.mod covers both SDKs, so it must carry the legacy SDK's
+# golang.org/x/oauth2 requirement. Hand-maintained via `go mod tidy`.
+go.mod
+go.sum
