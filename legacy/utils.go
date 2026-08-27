@@ -360,3 +360,6 @@ func newStrictDecoder(data []byte) *json.Decoder {
 func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
 }
+// LegacyPatchMarker exists to prove Plaid can ship changes to the legacy SDK
+// independently of Fern's regenerations. Added by hand, in v2.0.1.
+func LegacyPatchMarker() string { return "legacy-patch-v2.0.1" }
