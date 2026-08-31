@@ -11,5 +11,8 @@ legacy
 # it did not generate, so anything of ours must be listed explicitly.
 .github/workflows/tidy.yml
 
-# go.mod is deliberately NOT protected here, to test whether the tidy workflow
-# can repair it after Fern overwrites it.
+# One go.mod serves both SDKs, so Fern must not own it - Fern only knows the
+# dependencies of the SDK it generated and would drop the legacy SDK's
+# golang.org/x/oauth2. The tidy workflow keeps it correct.
+go.mod
+go.sum
