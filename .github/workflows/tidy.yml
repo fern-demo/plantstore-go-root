@@ -1,0 +1,48 @@
+name: tidy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  tidy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: go.mod as Fern left it
+        run: |
+          echo "--- go.mod before tidy ---"; cat go.mod
+          echo "oauth2 present before tidy: $(grep -c 'golang.org/x/oauth2' go.mod)"
+
+      - name: Does it even build before tidy?
+        continue-on-error: true
+        run: go build ./... && echo "BUILD OK (unexpected)" || echo "BUILD BROKEN before tidy - as expected"
+
+      - name: go mod tidy
+        run: go mod tidy
+
+      - name: go.mod after tidy
+        run: |
+          echo "--- go.mod after tidy ---"; cat go.mod
+          echo "oauth2 restored by tidy: $(grep -c 'golang.org/x/oauth2' go.mod)"
+
+      - name: Commit the repair
+        run: |
+          if git diff --quiet go.mod go.sum; then
+            echo "already tidy - nothing to commit"
+          else
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add go.mod go.sum
+            git commit -m "ci: go mod tidy after SDK regeneration"
+            git push
+            echo "pushed tidy repair"
+          fi
+
+      - name: Build and vet both SDKs
+        run: go build ./... && go vet ./...

@@ -7,7 +7,6 @@ README.md
 # updates to it independently; Fern must never touch it.
 legacy
 
-# One go.mod covers both SDKs, so it must carry the legacy SDK's
-# golang.org/x/oauth2 requirement. Hand-maintained via `go mod tidy`.
-go.mod
-go.sum
+# go.mod is deliberately NOT protected. Fern overwrites it with only the
+# generated SDK's dependencies; the tidy workflow then restores the legacy
+# SDK's golang.org/x/oauth2. That way Fern's dependency bumps keep flowing.
