@@ -11,10 +11,5 @@ legacy
 # it did not generate, so anything of ours must be listed explicitly.
 .github/workflows/tidy.yml
 
-# go.mod is deliberately NOT protected. Fern overwrites it with only the
-# generated SDK's dependencies; the tidy workflow then restores the legacy
-
-# Hand-written CI. Fern manages .github/workflows and DELETES files there that
-# it did not generate, so anything of ours must be listed explicitly.
-.github/workflows/tidy.yml
-# SDK's golang.org/x/oauth2. That way Fern's dependency bumps keep flowing.
+# go.mod is deliberately NOT protected here, to test whether the tidy workflow
+# can repair it after Fern overwrites it.
